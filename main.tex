@@ -1,0 +1,53 @@
+%--------- Feasibility Study (short, <50 lines) ---------
+\documentclass[12pt,a4paper]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{booktabs,tabularx}
+\usepackage{enumitem}
+\setlist[itemize]{leftmargin=1em,itemsep=0.2em}
+\begin{document}
+\begin{center}
+\textbf{Feasibility Study}\\
+\small Personal \& Provider Billing Management System (PPBMS)
+\end{center}\vspace{0.5em}\hrule\vspace{0.6em}
+\textbf{Purpose.} Compare PPBMS with current fragmented billing; assess economic, technical, and operational viability.
+
+\textbf{Scope.} Unified bill tracking, reminders, payments, provider portal, receipts, basic reporting.
+
+\textbf{Assumptions.} MVP in 6--9 months; cloud-first; payment gateway; SMS/email; MVP scale: ~5k users, 20 providers.
+
+\textbf{Economic Feasibility.}
+\begin{itemize}
+  \item \emph{CapEx (one-time):} design, web/mobile, backend, security, setup (\~BDT 1.45M).
+  \item \emph{OpEx (annual):} cloud, support, messaging, monitoring (\~BDT 0.45M).
+  \item \emph{Benefits (illustrative):} time saved for users + lower provider support \(\geq\) BDT 1.18M/yr.
+\end{itemize}
+\noindent\textit{Payback:} between Year 1--2; \textit{ROI (2yr):} ~20\% (conservative).
+
+\textbf{Technical Feasibility.}
+\begin{itemize}
+  \item Stack: React/Next.js or Flutter; Node/Spring; PostgreSQL; Redis; Docker; CI/CD.
+  \item Integrations: payment gateway; SMS/email; push. P95 API \le 500 ms at MVP scale.
+  \item Security: encryption in transit/at rest; RBAC; audit logs; backups.
+\end{itemize}
+
+\textbf{Operational Feasibility.}
+\begin{itemize}
+  \item Fit: aligns with provider cycles; users add/auto-import bills; provider confirms payments.
+  \item Training: quick guides; 2--3 hr provider onboarding. Uptime target \ge 99.9\%.
+  \item Retrieval: searchable history, receipts; reminders cut manual follow-ups by >50\%.
+\end{itemize}
+
+\textbf{Risks \& Mitigations.}
+\begin{tabularx}{\textwidth}{@{}lX@{}}
+\toprule
+Gateway delay & Sandbox early; backup provider; feature-flag. \\
+Data breach & RBAC, least-privilege, pentest, IR plan. \\
+Low adoption & Onboarding UX, incentives, provider partners. \\
+Delivery fails & Multi-channel fallback; retries; monitoring. \\
+Perf bottleneck & Caching, queues, load tests, SLOs. \\
+\bottomrule
+\end{tabularx}
+
+\textbf{Conclusion.} Feasible with manageable risk. Proceed with MVP + 2--3 provider pilot; revisit metrics at 3 months.
+\end{document}
+%--------- End ---------
